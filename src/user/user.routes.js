@@ -29,8 +29,7 @@ router.post(
     check("correo", "This is not a valid email").isEmail(),
     check("username").custom(existenteUsername),
     check("correo").custom(existenteEmail),
-    check("role").custom(esRoleValido),
-    validarCampos,
+        validarCampos,
   ],
   createUser
 );
