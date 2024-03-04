@@ -4,7 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
-
+import { dbConnection } from './mongo.js';
 
 class Server{
     constructor(){
@@ -13,6 +13,11 @@ class Server{
         this.usuarioPath = '/opinion-manager/v1/users'
 
         this.middlewares();
+        this.conectarDB();
+    }
+
+    async conectarDB() {
+        await dbConnection();
     }
 
     middlewares(){
