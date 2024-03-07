@@ -17,7 +17,7 @@ export const validarJWT = async (req, res, next) => {
 
         if (!usuario) {
             return res.status(401).json({
-                msg: 'User does not exist in the database'
+                msg: "User doesn't exist in the database"
             });
         }
 

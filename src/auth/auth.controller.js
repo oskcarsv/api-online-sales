@@ -12,7 +12,7 @@ export const login = async (req, res) => {
 
     if (!usuario) {
       return res.status(400).json({
-        msg: "Incorrect credentials, email or username does not exist",
+        msg: "Incorrect credentials, email or username doesn't exist",
       });
     }
 

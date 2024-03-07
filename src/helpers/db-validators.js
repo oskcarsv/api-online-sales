@@ -7,7 +7,7 @@ export const esRoleValido = async (role = '') => {
     const existeRol = await Role.findOne({ role });
 
     if (!existeRol) {
-        throw new Error(`The role ${role} does not exist in the database`);
+        throw new Error(`The role ${role} doesn't exist in the database`);
     }
 }
 
@@ -23,7 +23,7 @@ export const noExisteUsername = async (username = '') => {
     const existeUsername = await User.findOne({ username });
 
     if (!existeUsername) {
-        throw new Error(`The username ${username} does not exist`);
+        throw new Error(`The username ${username} doesn't exist`);
     }
 }
 
@@ -39,6 +39,6 @@ export const existeUsuarioById = async (id = '') => {
     const existeUsuario = await User.findById(id);
 
     if (!existeUsuario) {
-        throw new Error(`ID: ${id} Doesn't exist`);
+        throw new Error(`ID: ${id} doesn't exist`);
     }
 }
