@@ -27,6 +27,12 @@ export const validarJWT = async (req, res, next) => {
             });
         }
 
+        if (usuario.role == 'CLIENT_ROLE') {
+            return res.status(401).json({
+                msg: 'Access denied, only the profile owner or admins can edit it'
+            });
+        }
+
         req.usuario = usuario;
 
         next();

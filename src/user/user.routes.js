@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, createUser, getUserById, updateUser, deleteUser} from "./user.controller.js";
+import { getUsers, createUser, getUserById, updateClient, deleteUser} from "./user.controller.js";
 import { existenteEmail, existenteUsername, esRoleValido, existeUsuarioById} from "../helpers/db-validators.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
-// import { validarJWT } from "../middlewares/validar-jwt.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
@@ -21,7 +21,7 @@ router.get(
 );
 
 router.post(
-  "/",
+  "/createAccountClient",
   [
     check("nombre", "The name is required").not().isEmpty(),
     check("username", "The password is required").not().isEmpty(),
@@ -35,21 +35,24 @@ router.post(
 );
 
 router.put(
-  "/:id",
+  "/editProfileClient",
   [
-    check("id", "No es un ID válido").isMongoId(),
+    validarJWT,
+    check("id", "Not a valid ID").isMongoId(),
     check("id").custom(existeUsuarioById),
+    check("username").custom(existenteUsername),
+    check("correo").custom(existenteEmail),
     validarCampos,
   ],
-  updateUser
+  updateClient
 );
 
 router.delete(
   "/:id",
   [
-    // validarJWT,
+    validarJWT,
     tieneRole("ADMIN_ROLE", "USER_ROLE"),
-    check("id", "No es un ID válido").isMongoId(),
+    check("id", "Not a valid ID").isMongoId(),
     check("id").custom(existeUsuarioById),
     validarCampos,
   ],

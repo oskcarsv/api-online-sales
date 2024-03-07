@@ -19,6 +19,13 @@ export const existenteUsername = async (username = '') => {
     }
 }
 
+export const noExisteUsername = async (username = '') => {
+    const existeUsername = await User.findOne({ username });
+
+    if (!existeUsername) {
+        throw new Error(`The username ${username} does not exist`);
+    }
+}
 
 export const existenteEmail = async (correo = '') => {
     const existeEmail = await User.findOne({ correo });

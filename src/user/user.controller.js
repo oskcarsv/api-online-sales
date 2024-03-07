@@ -43,22 +43,41 @@ export const getUserById = async (req, res) => {
     });
 }
 
-export const updateUser = async (req, res = response) => {
-    const { id } = req.params;
-    const { _id, password, google, correo, ...rest } = req.body;
+export const updateClient = async (req, res = response) => {
+    const { _id, id, newPassword, google, correo, oldPassword, ...rest } = req.body;
 
-    if (password) {
+    if (!oldPassword) {
+        return res.status(400).json({
+            msg: 'oldPassword is required to make changes'
+        });
+    }
+
+    if (newPassword && newPassword.length < 6) {
+        return res.status(400).json({
+            msg: 'The new password must be at least 6 characters'
+        });
+    }
+
+    const user = await User.findById(id);
+
+    if (!bcryptjs.compareSync(oldPassword, user.password)) {
+        return res.status(400).json({
+            msg: 'Old Password is incorrect, please try again'
+        });
+    }
+
+    if (newPassword) {
         const salt = bcryptjs.genSaltSync();
-        rest.password = bcryptjs.hashSync(password, salt);
+        rest.password = bcryptjs.hashSync(newPassword, salt);
     }
 
     await User.findByIdAndUpdate(id, rest);
 
-    const user = await User.findOne({ _id: id });
+    const userUpdated = await User.findOne({ _id: id });
 
     res.status(200).json({
         msg: 'User successfully updated',
-        user,
+        userUpdated,
     });
 }
 
