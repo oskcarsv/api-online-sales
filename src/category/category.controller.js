@@ -58,10 +58,17 @@ export const updateCategory = async (req, res = response) => {
 }
 
 export const deleteCategory = async (req, res = response) => {
-    const { id } = req.body;
-    const category = await Category.findByIdAndUpdate(id, { estado: false }, { new: true });
+    const { name, confirmation } = req.body;
+
+    if (confirmation !== 'YES') {
+        return res.status(400).json({ 
+            msg: 'Confirmation must be YES to proceed' 
+        });
+    }
+
+    await Category.findOneAndUpdate({ name }, { estado: false });
 
     res.status(200).json({
-        category,
+        msg: 'User successfully deleted' 
     });
 }

@@ -44,4 +44,16 @@ router.put(
     updateCategory
 );
 
+router.delete(
+    "/deleteCategory",
+    [
+        validarJWT,
+        check("name", "The name is required").not().isEmpty(),
+        check("name").custom(noExisteCategory),    
+        check("confirmation", "Confirmation is required").not().isEmpty(),
+        validarCampos
+    ],
+    deleteCategory
+);
+
 export default router;

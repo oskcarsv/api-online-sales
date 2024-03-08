@@ -1,4 +1,3 @@
-// Importar modelos necesarios
 import Category from '../category/category.model.js';
 
 

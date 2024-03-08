@@ -122,7 +122,7 @@ export const deleteClient = async (req, res) => {
 
     if (confirmation !== 'YES') {
         return res.status(400).json({ 
-            msg: 'Confirmation must be "YES" to proceed' 
+            msg: 'Confirmation must be YES to proceed' 
         });
     }
 
