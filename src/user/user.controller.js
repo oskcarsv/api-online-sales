@@ -79,7 +79,7 @@ export const updateClient = async (req, res = response) => {
     });
 }
 
-export const deleteUser = async (req, res) => {
+export const deleteClient = async (req, res) => {
     const { id } = req.params;
 
     const user = await User.findByIdAndUpdate(id, { estado: false });

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, createUser, getUserById, updateClient, deleteUser} from "./user.controller.js";
+import { getUsers, createUser, getUserById, updateClient, deleteClient} from "./user.controller.js";
 import { existenteEmail, existenteUsername, existeUsuarioById, noExisteUsername} from "../helpers/db-validators.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
@@ -56,7 +56,7 @@ router.delete(
     check("id").custom(existeUsuarioById),
     validarCampos,
   ],
-  deleteUser
+  deleteClient
 );
 
 export default router;
