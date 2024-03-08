@@ -2,9 +2,10 @@ import { response, request } from "express";
 import Product from './product.model.js';
 import Category from '../category/category.model.js';
 
+
 export const getProducts = async (req = request, res = response) => {
     const { limite, desde } = req.query;
-    const query = { estado: true };
+    const query = { status: "IN_STOCK" };
 
     const [total, products] = await Promise.all([
         Product.countDocuments(query),
@@ -127,4 +128,34 @@ export const getSoldOutProducts = async (req, res) => {
     res.status(200).json({
         products: productResponse,
     });
+}
+
+export const deleteProduct = async (req, res) => {
+    const { name, confirmation } = req.body;
+
+    if (confirmation !== "YES") {
+        return res.status(400).json({
+            mensaje: "Confirmation must be 'YES' to delete the product"
+        });
+    }
+
+    const product = await Product.findOne({ name });
+
+    product.status = "DELETED";
+    await product.save();
+
+    res.status(200).json({
+        msg: 'Product deleted successfully'
+    });
+}
+
+export async function updateProductStatus(req, res, next) {
+    const products = await Product.find({ stock: 0, status: "IN_STOCK" });
+
+    for (let product of products) {
+        product.status = "SOLD_OUT";
+        await product.save();
+    };
+
+    next();
 }
