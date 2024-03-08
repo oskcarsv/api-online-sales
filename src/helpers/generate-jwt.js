@@ -1,4 +1,3 @@
-// Importar la biblioteca 'jsonwebtoken'
 import jwt from 'jsonwebtoken';
 
 export const generarJWT = (uid = ' ') => {

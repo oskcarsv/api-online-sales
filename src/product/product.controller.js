@@ -3,22 +3,25 @@ import Product from './product.model.js';
 import Category from '../category/category.model.js';
 
 
-export const getProducts = async (req = request, res = response) => {
-    const { limite, desde } = req.query;
+export const getProducts = async (req, res) => {
     const query = { status: "IN_STOCK" };
 
-    const [total, products] = await Promise.all([
-        Product.countDocuments(query),
-        Product.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite)),
-    ]);
+    const products = await Product.find(query).populate('category');
+
+    const productsResponse = products.map(product => ({
+        name: product.name,
+        price: product.price,
+        stock: product.stock,
+        category: product.category.name,
+        status: product.status,
+    }));
 
     res.status(200).json({
-        total,
-        products,
+        msg: 'Products retrieved successfully',
+        products: productsResponse
     });
 }
+
 
 export const createProduct = async (req, res) => {
     const { name, price, stock, category, status } = req.body;
@@ -149,13 +152,28 @@ export const deleteProduct = async (req, res) => {
     });
 }
 
+
 export async function updateProductStatus(req, res, next) {
     const products = await Product.find({ stock: 0, status: "IN_STOCK" });
 
     for (let product of products) {
         product.status = "SOLD_OUT";
         await product.save();
-    };
+    }
+    
+    next();
+}
+
+export async function updateProductCategory(req, res, next) {
+    const defaultCategory = await Category.findOne({ name: "Default" });
+    const products = await Product.find().populate('category');
+
+    for (let product of products) {
+        if (product.category && product.category.estado === false) {
+            product.category = defaultCategory._id;
+            await product.save();
+        }
+    }
 
     next();
 }

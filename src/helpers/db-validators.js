@@ -1,4 +1,3 @@
-// Importar modelos necesarios
 import Role from '../role/role.model.js';
 import User from '../user/user.model.js';
 

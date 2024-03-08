@@ -7,7 +7,8 @@ import {
     updateProduct,
     getSoldOutProducts,
     deleteProduct,
-    updateProductStatus
+    updateProductStatus,
+    updateProductCategory
 } from "./product.controller.js";
 import { existenteProduct, noExisteProduct } from "../helpers/db-validators-product.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
@@ -17,6 +18,7 @@ const router = Router();
 
 router.get("/",
             updateProductStatus,
+            updateProductCategory,
             getProducts);
 
 router.get(
