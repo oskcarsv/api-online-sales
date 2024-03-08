@@ -17,3 +17,50 @@ export const getCategories = async (req = request, res = response) => {
         categories,
     });
 }
+
+export const createCategory = async (req, res) => {
+    const { name, description } = req.body;
+    const category = new Category({ name, description });
+
+    await category.save();
+
+    res.status(200).json({
+        msg: 'Category created successfully',
+        category
+    });
+}
+
+export const getCategoryById = async (req, res) => {
+    const { id } = req.params;
+    const category = await Category.findOne({ _id: id });
+
+    res.status(200).json({
+        category,
+    });
+}
+
+export const updateCategory = async (req, res = response) => {
+    const { name, estado, ...rest } = req.body;
+
+    // const category = await Category.findOne({ name: name });
+
+
+    await Category.findOneAndUpdate({ name: name }, rest);
+
+    const categoryUpdated = await User.findOne({ name: rest.name || name });
+
+
+    res.status(200).json({
+        msg: 'Category successfully updated',
+        categoryUpdated,
+    });
+}
+
+export const deleteCategory = async (req, res = response) => {
+    const { id } = req.body;
+    const category = await Category.findByIdAndUpdate(id, { estado: false }, { new: true });
+
+    res.status(200).json({
+        category,
+    });
+}

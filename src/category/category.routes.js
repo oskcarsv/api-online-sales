@@ -19,3 +19,17 @@ router.get(
   ],
   getCategoryById
 );
+
+router.post(
+  "/createCategory",
+  [
+    validarJWT,
+    check("name", "The name is required").not().isEmpty(),
+    check("name").custom(existenteCategory),
+    check("description", "The description is required").not().isEmpty(),
+    validarCampos,
+  ],
+  createCategory
+);
+
+export default router;
