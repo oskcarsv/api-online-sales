@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, createUser, getUserById, updateClient, deleteClient} from "./user.controller.js";
+import { getUsers, createUser, getUserById, updateClient, updateClientAdmin,deleteClient} from "./user.controller.js";
 import { existenteEmail, existenteUsername, existeUsuarioById, noExisteUsername} from "../helpers/db-validators.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
@@ -38,8 +38,8 @@ router.put(
   "/editProfileClient",
   [
       validarJWT,
-      check("oldUsername", "oldUsername is required").not().isEmpty(),
-      check("oldUsername").custom(noExisteUsername),
+      check("username", "username is required").not().isEmpty(),
+      check("username").custom(noExisteUsername),
       check("newUsername").custom(existenteUsername), 
       check("correo").custom(existenteEmail), 
       validarCampos,
@@ -47,13 +47,28 @@ router.put(
   updateClient
 );
 
+router.put(
+  "/editProfileClientAdmin",
+  [
+      validarJWT,
+      check("username", "username is required").not().isEmpty(),
+      check("username").custom(noExisteUsername),
+      check("newUsername").custom(existenteUsername), 
+      check("correo").custom(existenteEmail), 
+      validarCampos,
+  ],
+  updateClientAdmin
+);
+
+
 router.delete(
-  "/:id",
+  "/deleteProfileClient",
   [
     validarJWT,
-    tieneRole("ADMIN_ROLE", "USER_ROLE"),
-    check("id", "Not a valid ID").isMongoId(),
-    check("id").custom(existeUsuarioById),
+    check("username", "Username is required").not().isEmpty(),
+    check("username").custom(noExisteUsername),
+    check("password", "Password is required").not().isEmpty(),
+    check("confirmation", "Confirmation is required").not().isEmpty(),
     validarCampos,
   ],
   deleteClient

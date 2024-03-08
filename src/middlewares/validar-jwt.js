@@ -15,6 +15,12 @@ export const validarJWT = async (req, res, next) => {
 
         const usuario = await Usuario.findById(uid);
 
+        if (!usuario.username) {
+            return res.status(401).json({
+                msg: "Username doesn't exist in the database"
+            });
+        }
+
         if (!usuario) {
             return res.status(401).json({
                 msg: "User doesn't exist in the database"
@@ -27,9 +33,8 @@ export const validarJWT = async (req, res, next) => {
             });
         }
 
-
         if (usuario.role == 'CLIENT_ROLE') {
-            if (usuario.username !== req.body.oldUsername) {
+            if (usuario.username !== req.body.username) {
                 return res.status(401).json({
                     msg: 'Access denied, only the owner of the account or admins can make changes to the profile'
                 });
