@@ -42,12 +42,13 @@ export const getCategoryById = async (req, res) => {
 export const updateCategory = async (req, res = response) => {
     const { name, estado, ...rest } = req.body;
 
-    // const category = await Category.findOne({ name: name });
-
+    if (req.body.newName) {
+        rest.name = req.body.newName;
+    }
 
     await Category.findOneAndUpdate({ name: name }, rest);
 
-    const categoryUpdated = await User.findOne({ name: rest.name || name });
+    const categoryUpdated = await Category.findOne({ name: rest.name || name });
 
 
     res.status(200).json({

@@ -11,7 +11,7 @@ export const existenteCategory = async (name = '') => {
 }
 
 export const noExisteCategory = async (name = '') => {
-    const existeCategory = await UsCategoryr.findOne({ name });
+    const existeCategory = await Category.findOne({ name });
 
     if (!existeCategory) {
         throw new Error(`The category name ${name} doesn't exist`);

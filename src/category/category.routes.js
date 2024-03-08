@@ -11,25 +11,37 @@ const router = Router();
 router.get("/", getCategories);
 
 router.get(
-  "/:id",
-  [
-    check("id", "Not a valid ID").isMongoId(),
-    check("id").custom(existeCategoryById),
-    validarCampos,
-  ],
-  getCategoryById
+    "/:id",
+    [
+        check("id", "Not a valid ID").isMongoId(),
+        check("id").custom(existeCategoryById),
+        validarCampos,
+    ],
+    getCategoryById
 );
 
 router.post(
-  "/createCategory",
-  [
-    validarJWT,
-    check("name", "The name is required").not().isEmpty(),
-    check("name").custom(existenteCategory),
-    check("description", "The description is required").not().isEmpty(),
-    validarCampos,
-  ],
-  createCategory
+    "/createCategory",
+    [
+        validarJWT,
+        check("name", "The name is required").not().isEmpty(),
+        check("name").custom(existenteCategory),
+        check("description", "The description is required").not().isEmpty(),
+        validarCampos,
+    ],
+    createCategory
+);
+
+router.put(
+    "/editCategory",
+    [
+        validarJWT,
+        check("name", "The name is required").not().isEmpty(),
+        check("name").custom(noExisteCategory),
+        check("newName").custom(existenteCategory),
+        validarCampos,
+    ],
+    updateCategory
 );
 
 export default router;
