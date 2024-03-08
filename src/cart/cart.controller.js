@@ -17,6 +17,10 @@ export const addToCart = async (req, res) => {
         return res.status(404).json({ message: 'Product not found' });
     }
 
+    if (product.status === 'DELETED' || product.status === 'SOLD_OUT') {
+        return res.status(400).json({ message: 'Product is not available' });
+    }
+
     let cart = await Cart.findOne({ user: user._id });
 
     if (!cart) {
@@ -33,15 +37,14 @@ export const addToCart = async (req, res) => {
         cart.total += product.price * Number(quantity);
     }
 
+    product.stock -= quantity;
+    await product.save();
+
     await cart.save();
 
-    // Crear una copia del carrito para modificarlo antes de devolverlo
     const cartToReturn = cart.toObject();
-
-    // Reemplazar el ID del usuario por el nombre de usuario
     cartToReturn.user = user.username;
 
-    // Reemplazar los ID de los productos por los nombres de los productos
     cartToReturn.products = await Promise.all(cartToReturn.products.map(async (item) => {
         const productDetails = await Product.findById(item.product);
         return {
@@ -51,5 +54,9 @@ export const addToCart = async (req, res) => {
         };
     }));
 
-    res.status(200).json({ message: 'Product added to cart', cart: cartToReturn });
+    res.status(200).json({
+        message: 'Product added to cart',
+        cart: cartToReturn
+        }
+    );
 };

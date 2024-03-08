@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { addToCart } from "./cart.controller.js";
+import {updateProductStatus, updateProductCategory} from "../product/product.controller.js"
 import { noExisteProduct, noExisteUsername} from "../helpers/db-validators-cart.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
@@ -11,6 +12,8 @@ router.post(
     "/addToCart",
     [
         validarJWT,
+        updateProductStatus,
+        updateProductCategory,
         check("username").custom(noExisteUsername),
         check("productName", "El nombre del producto es obligatorio").not().isEmpty(),
         check("productName").custom(noExisteProduct),
