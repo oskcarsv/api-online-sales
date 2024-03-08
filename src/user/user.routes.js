@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { getUsers, createUser, getUserById, updateClient, deleteUser} from "./user.controller.js";
-import { existenteEmail, existenteUsername, esRoleValido, existeUsuarioById} from "../helpers/db-validators.js";
+import { existenteEmail, existenteUsername, existeUsuarioById, noExisteUsername} from "../helpers/db-validators.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
@@ -37,12 +37,12 @@ router.post(
 router.put(
   "/editProfileClient",
   [
-    validarJWT,
-    check("id", "Not a valid ID").isMongoId(),
-    check("id").custom(existeUsuarioById),
-    check("username").custom(existenteUsername),
-    check("correo").custom(existenteEmail),
-    validarCampos,
+      validarJWT,
+      check("oldUsername", "oldUsername is required").not().isEmpty(),
+      check("oldUsername").custom(noExisteUsername),
+      check("newUsername").custom(existenteUsername), 
+      check("correo").custom(existenteEmail), 
+      validarCampos,
   ],
   updateClient
 );
