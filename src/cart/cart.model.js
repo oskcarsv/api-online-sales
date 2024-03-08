@@ -6,10 +6,15 @@ const cartSchema = new Schema({
         ref: 'User',
         required: [true, "The user is required"]
     },
-    products: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Product'
-    }]
+
+    products: [
+        { 
+            product: Schema.Types.ObjectId, 
+            quantity: Number 
+        }
+    ],
+
+    total: Number
 });
 
 export default model('Cart', cartSchema);

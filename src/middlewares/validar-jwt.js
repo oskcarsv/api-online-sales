@@ -34,13 +34,15 @@ export const validarJWT = async (req, res, next) => {
         }
 
         if (usuario.role == 'CLIENT_ROLE') {
-            if (usuario.username !== req.body.username) {
-                return res.status(401).json({
-                    msg: 'Access denied, only the owner of the account or admins can make changes to the profile'
-                });
+            if (req.body && req.body.username) {
+                if (usuario.username !== req.body.username) {
+                    return res.status(401).json({
+                        msg: 'Access denied, only the owner of the account or admins can make changes to the profile'
+                    });
+                }
             }
         }
-
+        
         req.usuario = usuario;
 
         next();
