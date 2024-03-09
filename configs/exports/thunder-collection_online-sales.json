@@ -1,0 +1,502 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "online-sales",
+    "dateExported": "2024-03-09T01:36:59.594Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "f47e4e6d-883b-4b8c-ab2a-033cb85d6544",
+            "name": "auth",
+            "containerId": "",
+            "created": "2024-03-04T15:17:10.010Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "ec5a2e6a-4275-4697-a960-f3e5fc2097a4",
+            "name": "client",
+            "containerId": "",
+            "created": "2024-03-04T15:17:21.098Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "969eb581-7710-4c5c-94ca-fa3078a25902",
+            "name": "admin",
+            "containerId": "",
+            "created": "2024-03-08T08:43:20.089Z",
+            "sortNum": 25000
+        },
+        {
+            "_id": "881de796-cf96-454c-bd34-d30f05c3147a",
+            "name": "super",
+            "containerId": "",
+            "created": "2024-03-04T16:29:42.022Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "6011b99b-339a-4bc4-a19a-6bbab526470a",
+            "name": "category",
+            "containerId": "",
+            "created": "2024-03-08T13:46:20.870Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "product",
+            "containerId": "",
+            "created": "2024-03-08T17:31:42.313Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "73976754-1b27-4529-ba08-ec6055959881",
+            "name": "cart",
+            "containerId": "",
+            "created": "2024-03-08T21:44:47.568Z",
+            "sortNum": 70000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "3a5feb24-ae61-4611-924b-12475924c30a",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "6011b99b-339a-4bc4-a19a-6bbab526470a",
+            "name": "view categories",
+            "url": "http://localhost:3000/online-sales/v1/categories",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2024-03-08T13:55:56.067Z",
+            "modified": "2024-03-08T13:56:14.462Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "4d768b54-089e-44f4-96cd-606b71db2e14",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "view products",
+            "url": "http://localhost:3000/online-sales/v1/products/",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2024-03-08T17:31:42.313Z",
+            "modified": "2024-03-08T18:04:30.226Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "7af5ad8a-39d4-4aff-91e8-e1ba8db62d4c",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "products sould out",
+            "url": "http://localhost:3000/online-sales/v1/products/getSoldOutProducts",
+            "method": "GET",
+            "sortNum": 6250,
+            "created": "2024-03-10T05:39:10.811Z",
+            "modified": "2024-03-10T05:45:38.374Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "d627e7f6-7d56-40b9-9fce-9b59bf21533a",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "product by name",
+            "url": "http://localhost:3000/online-sales/v1/products/getProductByName",
+            "method": "GET",
+            "sortNum": 7500,
+            "created": "2024-03-10T05:23:39.698Z",
+            "modified": "2024-03-08T19:47:21.169Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": ""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Silla\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "c6f16e02-f12c-4378-9db1-46cd8a7b9403",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "f47e4e6d-883b-4b8c-ab2a-033cb85d6544",
+            "name": "login",
+            "url": "http://localhost:3000/online-sales/v1/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-04T15:17:10.012Z",
+            "modified": "2024-03-08T22:48:21.692Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correoUsuario\":\"oscar\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "0e163490-fa6b-47b5-8ee7-d1beedea8054",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "ec5a2e6a-4275-4697-a960-f3e5fc2097a4",
+            "name": "create account",
+            "url": "http://localhost:3000/online-sales/v1/users/createAccountClient",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-04T15:17:21.100Z",
+            "modified": "2024-03-08T16:04:11.614Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Vandosal\",\n  \"username\": \"vandosal\",\n  \"correo\":\"vandosal@gmail.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "524de1a5-1726-4248-a3e9-fecdd4fdf0d3",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "881de796-cf96-454c-bd34-d30f05c3147a",
+            "name": "getUsers",
+            "url": "http://localhost:3000/online-sales/v1/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-04T16:29:42.024Z",
+            "modified": "2024-03-04T16:30:13.493Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "afc94b2b-f596-407e-ab19-e8b7b90e7088",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "969eb581-7710-4c5c-94ca-fa3078a25902",
+            "name": "create account - admin",
+            "url": "http://localhost:3000/online-sales/v1/users/createAccountClient",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T08:43:20.090Z",
+            "modified": "2024-03-08T16:04:30.203Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Alejandro\",\n  \"username\": \"alejandrito\",\n  \"correo\":\"alejandrito@gmail.com\",\n  \"password\":\"123456\",\n  \"role\": \"ADMIN_ROLE\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "7c1c0121-15ab-44a8-be47-6af3f0503222",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "6011b99b-339a-4bc4-a19a-6bbab526470a",
+            "name": "create category",
+            "url": "http://localhost:3000/online-sales/v1/categories/createCategory",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T13:47:29.137Z",
+            "modified": "2024-03-08T16:27:06.006Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzcwZmQwMGNkYzNiMjJjYzY3ZjQiLCJpYXQiOjE3MDk5MTUwMTIsImV4cCI6MTcwOTkxODYxMn0.CjoMSt4ZgrSiohNLOWSm1VuVFxXmAyzAIXKI9ptpCp8"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Art\",\n  \"description\": \"Art products\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "9f678f58-1e95-487b-8063-b4708db93e43",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "create product",
+            "url": "http://localhost:3000/online-sales/v1/products/createProduct",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T17:31:42.314Z",
+            "modified": "2024-03-09T18:12:29.530Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MTAwMDc5NDEsImV4cCI6MTcxMDAxMTU0MX0.uR3FW4YAfdi64npnvkNg1wilTPRA9K9qcSm_YZx3X7c"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"name\": \"safdssdfadfadshege\",\r\n    \"price\": 500.50,\r\n    \"stock\": 25,\r\n    \"category\": \"Home\"\r\n}\r\n",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "a64d6197-4a56-4167-8682-add89e0b02b4",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "73976754-1b27-4529-ba08-ec6055959881",
+            "name": "add to cart",
+            "url": "http://localhost:3000/online-sales/v1/cart/addToCart",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T21:45:10.807Z",
+            "modified": "2024-03-09T01:28:53.364Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MDk5NDY5NDQsImV4cCI6MTcwOTk1MDU0NH0.ywcq3qZXjqcyWib0h_GVayWCvelT2qN4RfyfRy2dSjI"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"oscar\",\n  \"productName\": \"Manzana\",\n  \"quantity\": 2\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "646e29b1-890e-45db-b705-4c3d578ee7b7",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "ec5a2e6a-4275-4697-a960-f3e5fc2097a4",
+            "name": "edit profile",
+            "url": "http://localhost:3000/online-sales/v1/users/editProfileClient/",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-04T15:17:21.100Z",
+            "modified": "2024-03-08T13:19:47.277Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMTAyNzg2M2U2NzM5YmQ5Yzk4NTAiLCJpYXQiOjE3MDk5MDM5NzgsImV4cCI6MTcwOTkwNzU3OH0.MmTU64DyYCLkluDy_XZrgKdfssOyz5NKWlTIECAefu8"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"jose-oscar\",\n  \"oldPassword\": \"123456\",\n  \n  \"name\": \"panchitos\",\n  \"email\": \"panchitos@gmail.com\",\n  \"newUsername\": \"jose-oscar\",\n  \"newPassword\": \"123456789\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "bf834a12-a500-410d-af05-6e5b1b4ef2b5",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "969eb581-7710-4c5c-94ca-fa3078a25902",
+            "name": "edit profile - admin",
+            "url": "http://localhost:3000/online-sales/v1/users/editProfileClientAdmin/",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-08T08:43:20.091Z",
+            "modified": "2024-03-08T13:24:52.349Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVhY2ZkNjcxNjFiN2JkOTg5YTMyMjAiLCJpYXQiOjE3MDk4ODc2NjksImV4cCI6MTcwOTg5MTI2OX0.guotl0joeAUPwAxB7ESctdKNVHBiGxrSpEtjbMVBfPI"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"Juan\",\n  \"oldPassword\": \"123456\",\n  \n  \"name\": \"juanis\",\n  \"email\": \"juanis@gmail.com\",\n  \"newUsername\": \"juanis\",\n  \"newPassword\": \"123456789\",\n  \n  \"role\": \"ADMIN_ROLE\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "6fcbced9-8f2b-46bb-ba0d-277b4902eac1",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "6011b99b-339a-4bc4-a19a-6bbab526470a",
+            "name": "edit category",
+            "url": "http://localhost:3000/online-sales/v1/categories/editCategory",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-08T16:27:55.055Z",
+            "modified": "2024-03-08T16:49:43.222Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MDk5MTYxMTksImV4cCI6MTcwOTkxOTcxOX0.R_eO4OfvXfy0NHynkW9_833fY_bL6AMyavxA-IGcbYw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Books\",\n  \"newName\": \"Bookstore\",\n  \"description\": \"aaaaa\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "b88474bf-ef6e-45de-8e4c-732dc43b7dc3",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "edit product",
+            "url": "http://localhost:3000/online-sales/v1/products/editProduct",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-08T17:31:42.315Z",
+            "modified": "2024-03-08T19:47:28.088Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MTAwNDkwMTEsImV4cCI6MTcxMDA1MjYxMX0.JxS9RlBGXR_P-JALk8Y2NYNBIlQ_yEB9lLtuhLJlL2s"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"oldName\": \"Silla ergonomica\",\n  \n    \"newName\": \"Silla\",\n    \"price\": 1000.50,\n    \"stock\": 30,\n    \"category\": \"Technology\"\n}\n",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "fe4c6f4a-58ad-41d5-8590-4eec641f3344",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "ec5a2e6a-4275-4697-a960-f3e5fc2097a4",
+            "name": "delete account",
+            "url": "http://localhost:3000/online-sales/v1/users/deleteProfileClient/",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-08T00:48:56.732Z",
+            "modified": "2024-03-08T13:12:40.668Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMGUzODVmZWY5ZTU4ZDljYWM3YmIiLCJpYXQiOjE3MDk5MDM0MzUsImV4cCI6MTcwOTkwNzAzNX0.pUNsG9zL4pXbbOBgFsXG3k4j0_YZ0sGmx1VZdqUJqTQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"jose-oscar\",\n  \"password\": \"123456789\",\n  \"confirmation\": \"YES\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "10bc6568-66a0-4bda-86e1-d7d65145fa40",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "969eb581-7710-4c5c-94ca-fa3078a25902",
+            "name": "delete account - admin",
+            "url": "http://localhost:3000/online-sales/v1/users/deleteProfileClient/",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-08T08:43:20.093Z",
+            "modified": "2024-03-08T08:51:30.859Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVhY2ZkNjcxNjFiN2JkOTg5YTMyMjAiLCJpYXQiOjE3MDk4ODc2NjksImV4cCI6MTcwOTg5MTI2OX0.guotl0joeAUPwAxB7ESctdKNVHBiGxrSpEtjbMVBfPI"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"juanis\",\n  \"password\": \"123456789\",\n  \"confirmation\": \"YES\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "d79c1574-c1ef-471d-9b4d-635581073c47",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "6011b99b-339a-4bc4-a19a-6bbab526470a",
+            "name": "detele category",
+            "url": "http://localhost:3000/online-sales/v1/categories/deleteCategory",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-08T16:57:56.720Z",
+            "modified": "2024-03-08T17:04:52.363Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MDk5MTYxMTksImV4cCI6MTcwOTkxOTcxOX0.R_eO4OfvXfy0NHynkW9_833fY_bL6AMyavxA-IGcbYw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"lalalal\",\n  \"confirmation\": \"YES\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "c71ee2fd-fa42-45fa-8978-32ff03142ab9",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "30608de8-0a48-496d-a06b-c93de85ccfdd",
+            "name": "delete product",
+            "url": "http://localhost:3000/online-sales/v1/products/deleteProduct",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-08T17:31:42.316Z",
+            "modified": "2024-03-08T18:04:02.768Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MTAwNDkwMTEsImV4cCI6MTcxMDA1MjYxMX0.JxS9RlBGXR_P-JALk8Y2NYNBIlQ_yEB9lLtuhLJlL2s"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Silla\",\n  \"confirmation\": \"YES\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "4d6eb568-72d6-4093-8e27-601677373eef",
+            "colId": "6f14f838-a3f5-4876-8992-bce8d19bc3c5",
+            "containerId": "73976754-1b27-4529-ba08-ec6055959881",
+            "name": "create invoice",
+            "url": "http://localhost:3000/online-sales/v1/invoice/createInvoice",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-03-09T00:12:42.254Z",
+            "modified": "2024-03-09T01:15:51.509Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMzZlNWQwMGNkYzNiMjJjYzY3ZWMiLCJpYXQiOjE3MDk5NDY5NDQsImV4cCI6MTcwOTk1MDU0NH0.ywcq3qZXjqcyWib0h_GVayWCvelT2qN4RfyfRy2dSjI"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"oscar\"\n}\n\n",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
