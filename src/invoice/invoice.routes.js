@@ -7,14 +7,14 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.post(
-    '/createInvoice',
-    [
-        validarJWT,
-        
-        check('username', 'El nombre de usuario es obligatorio').not().isEmpty(),
-        validarCampos
-    ],
-    createInvoice
+  "/createInvoice",
+  [
+    validarJWT,
+
+    check("username", "El nombre de usuario es obligatorio").not().isEmpty(),
+    validarCampos,
+  ],
+  createInvoice,
 );
 
 export default router;
