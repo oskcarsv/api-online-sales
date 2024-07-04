@@ -6,13 +6,13 @@ import { validarCampos } from "../middlewares/validar-campos.js";
 const router = Router();
 
 router.post(
-    '/login',
-    [
-        check('correoUsuario', 'Invalid email or username').not().isEmpty(),
-        check('password', 'Password is required').not().isEmpty(),
-        validarCampos,
-    ],
-    login
+  "/login",
+  [
+    check("correoUsuario", "Invalid email or username").not().isEmpty(),
+    check("password", "Password is required").not().isEmpty(),
+    validarCampos,
+  ],
+  login,
 );
 
 export default router;

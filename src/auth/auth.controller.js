@@ -1,6 +1,6 @@
-import bcryptjs from 'bcryptjs';
-import Usuario from '../user/user.model.js'
-import { generarJWT } from '../helpers/generate-jwt.js';
+import bcryptjs from "bcryptjs";
+import Usuario from "../user/user.model.js";
+import { generarJWT } from "../helpers/generate-jwt.js";
 
 export const login = async (req, res) => {
   const { correoUsuario, password } = req.body;
@@ -32,15 +32,14 @@ export const login = async (req, res) => {
     const token = await generarJWT(usuario.id);
 
     res.status(200).json({
-      msg: 'Successful login, welcome ' + usuario.nombre,
+      msg: "Successful login, welcome " + usuario.nombre,
       usuario,
-      token
+      token,
     });
-
   } catch (e) {
     console.log(e);
     res.status(500).json({
       msg: "Error, contact the administrator",
     });
   }
-}
+};

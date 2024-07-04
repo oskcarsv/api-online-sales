@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const UserSchema = mongoose.Schema({
   nombre: {
@@ -23,7 +23,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
     enum: ["ADMIN_ROLE", "CLIENT_ROLE"],
-    default: "CLIENT_ROLE", 
+    default: "CLIENT_ROLE",
   },
   estado: {
     type: Boolean,
@@ -41,4 +41,4 @@ UserSchema.methods.toJSON = function () {
   return usuario;
 };
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model("User", UserSchema);

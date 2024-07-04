@@ -1,26 +1,25 @@
-import Product from '../product/product.model.js';
+import Product from "../product/product.model.js";
 
+export const existenteProduct = async (name = "") => {
+  const existeProduct = await Product.findOne({ name });
 
-export const existenteProduct = async (name = '') => {
-    const existeProduct = await Product.findOne({ name });
+  if (existeProduct) {
+    throw new Error(`The product name ${name} has already been registered`);
+  }
+};
 
-    if (existeProduct) {
-        throw new Error(`The product name ${name} has already been registered`);
-    }
-}
+export const noExisteProduct = async (name = "") => {
+  const existeProduct = await Product.findOne({ name });
 
-export const noExisteProduct = async (name = '') => {
-    const existeProduct = await Product.findOne({ name });
+  if (!existeProduct) {
+    throw new Error(`The product name ${name} doesn't exist`);
+  }
+};
 
-    if (!existeProduct) {
-        throw new Error(`The product name ${name} doesn't exist`);
-    }
-}
+export const existeProductById = async (id = "") => {
+  const existeProduct = await Product.findById(id);
 
-export const existeProductById = async (id = '') => {
-    const existeProduct = await Product.findById(id);
-
-    if (!existeProduct) {
-        throw new Error(`ID: ${id} doesn't exist`);
-    }
-}
+  if (!existeProduct) {
+    throw new Error(`ID: ${id} doesn't exist`);
+  }
+};
